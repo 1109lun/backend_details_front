@@ -35,3 +35,18 @@ export async function getUser(username, token) {
   
     return res.json();
   }
+
+  export async function updateUser(updateData, token) {
+    const res = await fetch(`${API_URL}/user/`, {
+      method: "PATCH",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updateData),
+    });
+  
+    if (!res.ok) throw new Error("更新失敗");
+    return res.json();
+  }
+  
