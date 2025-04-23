@@ -67,6 +67,9 @@ export default function Login() {
         >
           登入
         </button>
+        <p className="text-sm mt-2">
+          沒有帳號？<a href="/register" className="text-blue-600 underline">前往註冊</a>
+        </p>
       </form>
     </div>
   );

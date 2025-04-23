@@ -20,3 +20,18 @@ export async function getUser(username, token) {
     if (!res.ok) throw new Error('無法取得使用者資料');
     return res.json();
   }
+
+  export async function registerUser({ username, password, birthday }) {
+    const res = await fetch(`${API_URL}/user/`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password, birthday }),
+    });
+  
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.detail || '註冊失敗');
+    }
+  
+    return res.json();
+  }
