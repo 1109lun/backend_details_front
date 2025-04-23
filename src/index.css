@@ -1,3 +1,8 @@
+body {
+  background-color: #f1e3e3;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .login-container h2 {
   font-size: 24px;
   font-weight: bold;
