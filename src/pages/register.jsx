@@ -1,4 +1,3 @@
-// src/pages/Register.jsx
 import { useState } from "react";
 import { registerUser } from "../api/userApi";
 import { Link } from "react-router-dom";
@@ -29,54 +28,49 @@ export default function Register() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-20 p-6 rounded-xl shadow-lg bg-white">
-      <h2 className="text-2xl font-bold mb-4">註冊帳號</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block">帳號：</label>
+    <div className="login-container">
+      <h2>註冊帳號</h2>
+      <form onSubmit={handleSubmit} className="login-form">
+        <div className="form-group">
+          <label>帳號：</label>
           <input
             type="text"
             name="username"
-            className="w-full border px-3 py-2 rounded"
+            className="input"
             value={formData.username}
             onChange={handleChange}
             required
           />
         </div>
-        <div>
-          <label className="block">密碼：</label>
+        <div className="form-group">
+          <label>密碼：</label>
           <input
             type="password"
             name="password"
-            className="w-full border px-3 py-2 rounded"
+            className="input"
             value={formData.password}
             onChange={handleChange}
             required
           />
         </div>
-        <div>
-          <label className="block">生日：</label>
+        <div className="form-group">
+          <label>生日：</label>
           <input
             type="date"
             name="birthday"
-            className="w-full border px-3 py-2 rounded"
+            className="input"
             value={formData.birthday}
             onChange={handleChange}
             required
           />
         </div>
-        {error && <div className="text-red-500 text-sm">{error}</div>}
+        {error && <div className="message error">{error}</div>}
         {success && (
-          <div className="text-green-600 text-sm">
-            {success} <Link to="/" className="underline text-blue-600">返回登入</Link>
+          <div className="message success">
+            {success} <Link to="/" className="btn-link">返回登入</Link>
           </div>
         )}
-        <button
-          type="submit"
-          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-        >
-          註冊
-        </button>
+        <button type="submit" className="btn btn-success">註冊</button>
       </form>
     </div>
   );
