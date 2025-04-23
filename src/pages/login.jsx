@@ -1,6 +1,6 @@
 // src/pages/Login.jsx
 import { useState } from "react";
-import { login, getUser, updateUser } from "../api/userApi";
+import { login, getUser, updateUser, deleteUser } from "../api/userApi";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -47,6 +47,17 @@ export default function Login() {
     navigate("/");
   };
 
+  const handleDelete = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      await deleteUser(userInfo.username, token);
+      alert("帳號已刪除");
+      handleLogout();
+    } catch (err) {
+      alert("刪除失敗");
+    }
+  };
+
   if (userInfo) {
     return (
       <div className="max-w-md mx-auto mt-20 p-6 rounded-xl shadow-lg bg-white space-y-6">
@@ -89,12 +100,18 @@ export default function Login() {
           </button>
         </form>
 
-        <div className="text-sm">
+        <div className="text-sm flex flex-col gap-2">
           <button
             onClick={handleLogout}
             className="text-blue-600 underline mt-4"
           >
             回首頁
+          </button>
+          <button
+            onClick={handleDelete}
+            className="text-red-600 underline"
+          >
+            刪除帳號
           </button>
         </div>
       </div>

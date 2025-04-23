@@ -49,4 +49,18 @@ export async function getUser(username, token) {
     if (!res.ok) throw new Error("更新失敗");
     return res.json();
   }
+  export async function deleteUser(username, token) {
+    const res = await fetch(`${API_URL}/user/`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({ username }),
+    });
+  
+    if (!res.ok) throw new Error('刪除失敗');
+    return res.json();
+  }
+  
   
