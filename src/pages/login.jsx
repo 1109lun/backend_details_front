@@ -104,7 +104,7 @@ export default function Login() {
 
   return (
     <div className="login-container">
-      <h2>登入</h2>
+      <h2>登入頁面</h2>
       <form onSubmit={handleSubmit} className="login-form">
         <div className="form-group">
           <label>帳號：</label>
